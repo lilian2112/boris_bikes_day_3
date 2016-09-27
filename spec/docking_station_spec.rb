@@ -1,7 +1,7 @@
 require 'docking_station'
 
 describe DockingStation do
-  #it 'releases bike when user asks' do
-    #expect(release_bike(bike)).to eq 'Bike released'
-  #end
+  it 'releases bike when user asks' do
+    expect(subject).to respond_to :release_bike
+  end
 end
