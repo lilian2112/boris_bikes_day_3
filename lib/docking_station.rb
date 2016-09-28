@@ -3,12 +3,12 @@ class DockingStation
   attr_reader :bike
 
   def release_bike
-    raise "sorry no bikes available" unless bike
+    raise "sorry no bikes available" unless @bike
     @bike
   end
 
   def dock_bike(bike)
-    raise "sorry this station is full" unless ()
+    raise "sorry this station is full" if @bike
     @bike = bike
   end
 end
