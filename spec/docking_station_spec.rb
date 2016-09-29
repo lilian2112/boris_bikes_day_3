@@ -2,7 +2,6 @@ require 'docking_station'
 
 describe DockingStation do
     subject(:dockingstation) {described_class.new()}
-    let(:bike) {double :bike}
 
     it {is_expected.to respond_to :release_bike}
 
