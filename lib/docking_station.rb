@@ -1,7 +1,7 @@
 class DockingStation
   DEFAULT_CAPACITY = 20
 
-  def initialize(num)
+  def initialize(num = DEFAULT_CAPACITY)
   @bikes = []
   @capacity = num
   end

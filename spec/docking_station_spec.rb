@@ -1,7 +1,7 @@
 require 'docking_station'
 
 describe DockingStation do
-    subject(:dockingstation) {described_class.new(26)}
+    subject(:dockingstation) {described_class.new()}
     it {is_expected.to respond_to :release_bike}
 
     it 'releases previously docked bike' do
@@ -28,7 +28,8 @@ describe DockingStation do
     end
 
     it "should specify capacity for dockingstation instance" do
-    expect(subject.capacity).to eq 26
+    station = DockingStation.new(26)
+    expect(station.capacity).to eq 26
    end
 
     it {is_expected.to respond_to(:bikes)}
