@@ -1,9 +1,13 @@
 class DockingStation
   DEFAULT_CAPACITY = 20
-  def initialize
+
+  def initialize(num)
   @bikes = []
+  @capacity = num
   end
-  attr_reader :bikes
+
+  attr_reader :bikes, :capacity
+
   def release_bike
     raise "sorry no bikes available" if empty?
     @bikes.pop
@@ -16,7 +20,7 @@ class DockingStation
 
   private
   def full?
-    @bikes.length >= DEFAULT_CAPACITY
+    @bikes.length >= @capacity
   end
   def empty?
     @bikes.empty?

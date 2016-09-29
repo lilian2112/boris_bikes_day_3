@@ -1,8 +1,8 @@
 require 'docking_station'
 
 describe DockingStation do
+    subject(:dockingstation) {described_class.new(26)}
     it {is_expected.to respond_to :release_bike}
-
 
     it 'releases previously docked bike' do
       bike = Bike.new
@@ -13,8 +13,6 @@ describe DockingStation do
       expect { subject.release_bike }.to raise_error('sorry no bikes available')
     end
 
-
-
     it 'is working?' do
       expect(Bike.new.working?).to eq true
     end
@@ -24,13 +22,14 @@ describe DockingStation do
       expect(subject.dock_bike(bike)).to eq bike
     end
 
-
     it 'raise an error if the station has 20 bikes' do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
+      subject.capacity.times { subject.dock_bike(Bike.new) }
       expect { subject.dock_bike(Bike.new)}.to raise_error('sorry this station is full')
     end
 
-
+    it "should specify capacity for dockingstation instance" do
+    expect(subject.capacity).to eq 26
+   end
 
     it {is_expected.to respond_to(:bikes)}
     it 'shows number of bikes docked at station' do
