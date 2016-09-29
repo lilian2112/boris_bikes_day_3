@@ -12,6 +12,12 @@ describe DockingStation do
     it "raise an error if there is no bikes" do
       expect { subject.release_bike }.to raise_error('sorry no bikes available')
     end
+    it 'does not release broken bikes' do
+      bike = Bike.new
+      bike.report_broken?
+      subject.dock_bike(bike)
+      expect { subject.release_bike }.to raise_error("This bike is broken")
+    end
 
     it 'is working?' do
       expect(Bike.new.working?).to eq true
@@ -37,4 +43,6 @@ describe DockingStation do
       2.times {subject.dock_bike(Bike.new)}
       expect(subject.bikes.length).to eq 2
     end
+
+
 end

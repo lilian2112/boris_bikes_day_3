@@ -1,3 +1,5 @@
+require 'bike'
+
 class DockingStation
   DEFAULT_CAPACITY = 20
 
@@ -10,7 +12,9 @@ class DockingStation
 
   def release_bike
     raise "sorry no bikes available" if empty?
-    @bikes.pop
+    bike = @bikes.pop
+    raise "This bike is broken" if bike.broken == true
+    bike
   end
   def dock_bike(bike)
     raise "sorry this station is full" if full?
@@ -26,10 +30,4 @@ class DockingStation
     @bikes.empty?
   end
 
-end
-
-class Bike
-  def working?
-    true
-  end
 end
